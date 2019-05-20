@@ -1,0 +1,19 @@
+﻿<script src="~/js/jquery-3.3.1.min.js"></script>
+<h1>注册成功，<span id="num">5</span>秒s后将跳转到登录页面</h1>
+<script type="text/javascript">
+    $(document).ready(function () {
+        function jump(count) {
+            window.setTimeout(function(){
+                count--;
+                if(count > 0) {
+                    $('#num').text(count);
+                    jump(count);
+                } else {
+                    location.href="/Login?username="+ "@Html.Raw(@ViewBag.LoginName)";
+                }
+            }, 1000);
+        }
+
+        jump(5);
+    });
+</script>
